@@ -42,12 +42,14 @@ export const sendEmail = async (
   try {
     const html = await renderEmailTemplate(templateName, data);
 
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `${process.env.SMTP_USER}`,
       to,
       subject,
       html,
     });
+
+    console.log('Message sent:', info.messageId);
 
     return true;
   } catch (error) {
