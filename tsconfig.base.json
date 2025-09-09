@@ -20,6 +20,9 @@
     "customConditions": ["development"],
     "paths": {
       "@error-handler": ["packages/error-handler/index.ts"]
-    }
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
