@@ -27,7 +27,7 @@ export const userRegistration = async (
 
     await checkOtpRestrictions(email, next);
     await trackOTPRequests(email, next);
-    await sendOtp(email, name, 'user-activation-email');
+    await sendOtp(email, name, 'user-activation-mail');
 
     res
       .status(200)
