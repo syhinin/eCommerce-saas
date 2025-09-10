@@ -3,10 +3,9 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import swaggerUi from 'swagger-ui-express';
 
-//TODO fix errorMiddleware and swaggerDocument imports
 import { errorMiddleware } from '@error-handler';
 import router from './routes/auth.routes';
-import swaggerDocument from './swagger-output.json' with { type: 'json' };
+import swaggerDocument from './swagger-output.json';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 6001;
