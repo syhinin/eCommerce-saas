@@ -14,74 +14,63 @@
           "platform": "node",
           "outputPath": "apps/auth-service/dist",
           "format": [
-            "cjs"
+            "cjs"  
           ],
-          "bundle": false,
+          "bundle": true,
           "main": "apps/auth-service/src/main.ts",
           "tsConfig": "apps/auth-service/tsconfig.app.json",
           "assets": [
-            "apps/auth-service/src/assets"
+            "apps/auth-service/src/assets",
+            {
+              "input": "apps/auth-service/src",
+              "glob": "**/*.ejs",
+              "output": "."
+            }
           ],
           "esbuildOptions": {
             "sourcemap": true,
             "outExtension": {
               ".js": ".js"
-            }
+            },
+            "loader": {
+              ".ejs": "text"
+            },
+            "external": [
+            ],
+            "packages": "external"  
           }
         },
         "configurations": {
-          "development": {},
+          "development": {
+            "esbuildOptions": {
+              "sourcemap": true,
+              "outExtension": {
+                ".js": ".js"
+              },
+              "loader": {
+                ".ejs": "text"
+              },
+              "packages": "external"
+            }
+          },
           "production": {
             "esbuildOptions": {
               "sourcemap": false,
               "outExtension": {
                 ".js": ".js"
-              }
+              },
+              "loader": {
+                ".ejs": "text"
+              },
+              "packages": "external"
             }
           }
         }
       },
-      "prune-lockfile": {
-        "dependsOn": [
-          "build"
-        ],
-        "cache": true,
-        "executor": "@nx/js:prune-lockfile",
-        "outputs": [
-          "{workspaceRoot}/apps/auth-service/dist/package.json",
-          "{workspaceRoot}/apps/auth-service/dist/package-lock.json"
-        ],
-        "options": {
-          "buildTarget": "build"
-        }
-      },
-      "copy-workspace-modules": {
-        "dependsOn": [
-          "build"
-        ],
-        "cache": true,
-        "outputs": [
-          "{workspaceRoot}/apps/auth-service/dist/workspace_modules"
-        ],
-        "executor": "@nx/js:copy-workspace-modules",
-        "options": {
-          "buildTarget": "build"
-        }
-      },
-      "prune": {
-        "dependsOn": [
-          "prune-lockfile",
-          "copy-workspace-modules"
-        ],
-        "executor": "nx:noop"
-      },
       "serve": {
-        "continuous": true,
         "executor": "@nx/js:node",
         "defaultConfiguration": "development",
-        "dependsOn": [
-          "build"
-        ],
+        "dependsOn": ["build"],
         "options": {
           "buildTarget": "@e-commerce-saas/auth-service:build",
           "runBuildTargetDependencies": false

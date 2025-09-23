@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 import crypto from 'crypto';
 
-import redis from 'packages/libs/redis';
+import redis from '@packages/libs/redis';
 import { ValidationError } from '@error-handler';
 import { sendEmail } from './sendMail';
 

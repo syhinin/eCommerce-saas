@@ -3,9 +3,7 @@ import * as path from 'path';
 import cors from 'cors';
 import proxy from 'express-http-proxy';
 import morgan from 'morgan';
-import swaggerUi from 'swagger-ui-express';
 import { rateLimit, ipKeyGenerator } from 'express-rate-limit';
-import axios from 'axios';
 import cookieParser from 'cookie-parser';
 
 const app = express();

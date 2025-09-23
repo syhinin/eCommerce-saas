@@ -23,7 +23,8 @@
     "baseUrl": ".",
     "paths": {
       "@error-handler": ["packages/error-handler/index.ts"],
-      "@error-handler/*": ["packages/error-handler/*"]
+      "@error-handler/*": ["packages/error-handler/*"],
+      "@packages/*": ["packages/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
